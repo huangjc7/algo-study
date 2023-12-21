@@ -21,47 +21,30 @@ func MergeSort_c(a []int, p, r int) {
 
 	MergeSort_c(a, q+1, r) //右边
 	//合并 [p...q]和[q+1...r]合并为[p...r]
+	//Merge([4, 3, 2, 1], 0, 1, r)
 	Merge(a, p, q, r)
 }
 
-func Merge(a []int, p, q, r int) []int {
-	//i 给左边数据当初始下标
-	//j 给右边数据当初始下标
-	//k 给tmp []int 当初始下标
-	i, j, k := p, q+1, 0
+func Merge(arr []int, p, q, r int) []int {
+	// i是左边起始下标 j是中位下标 k是临时数组的起始下标
+	i, j, k := 0, q+1, 0
+	tmp := make([]int, r-p)
 
-	tmp := make([]int, r-p+1)
-
-	// i =0  q = 5
-	for i <= q && j <= r {
-		if a[i] <= a[j] {
-			tmp[k] = a[i]
+	for i <= q && j <= p {
+		//左右对比
+		if arr[i] < arr[j] {
+			tmp[k] = arr[i]
 			i++
+			k++
 		} else {
-			tmp[k] = a[j]
+			tmp[k] = arr[j]
 			j++
+			k++
 		}
-		k++
 	}
+	// 左边是否有多余数据
+	if i <
 
-	// 复制 left 切片中剩余的元素
-	for i <= q {
-		tmp[k] = a[i]
-		i++
-		k++
-	}
-	// 复制 right 切片中剩余的元素
-
-	//存在问题
-	for j <= p {
-		tmp[k] = a[j]
-		j++
-		k++
-	}
-
-	//数据拷贝回原数组
-	for i := 0; i <= r-p; i++ {
-		a[p+i] = tmp[i]
-	}
-	return a
+	// 右边是否有多余数据
+	// 合并到原来数组
 }
