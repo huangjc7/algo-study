@@ -1,9 +1,11 @@
-package mergeSort
+package main
+
+import "fmt"
 
 // [4,3,2,1]
 func MergeSort(a []int, n int) {
 	// MergeSort_c([4,3,2,1], 0, 3)
-	MergeSort_c(a, 0, len(a)-1)
+	MergeSort_c(a, 0, n-1)
 }
 
 func MergeSort_c(a []int, p, r int) {
@@ -25,26 +27,47 @@ func MergeSort_c(a []int, p, r int) {
 	Merge(a, p, q, r)
 }
 
-func Merge(arr []int, p, q, r int) []int {
-	// i是左边起始下标 j是中位下标 k是临时数组的起始下标
-	i, j, k := 0, q+1, 0
-	tmp := make([]int, r-p)
+func Merge(arr []int, p, q, r int) {
+	// i是左边起始下标 j是中位下标 k是临时数组的起始下标 r是末尾的下标
+	i, j, k := p, q+1, 0
+	tmp := make([]int, r-p+1)
 
-	for i <= q && j <= p {
+	for i <= q && j <= r {
 		//左右对比
 		if arr[i] < arr[j] {
 			tmp[k] = arr[i]
 			i++
-			k++
 		} else {
 			tmp[k] = arr[j]
 			j++
-			k++
-		}
-	}
-	// 左边是否有多余数据
-	if i <
 
-	// 右边是否有多余数据
+		}
+		k++
+	}
+	//[2,3]
+	// 判断子数组的数据
+	// 如果左侧子数组还有剩余，将其复制到tmp
+	for i <= q {
+		tmp[k] = arr[i]
+		i++
+		k++
+	}
+
+	// 如果右侧子数组还有剩余，将其复制到tmp
+	for j <= r {
+		tmp[k] = arr[j]
+		j++
+		k++
+	}
 	// 合并到原来数组
+	//将tmp拷贝回arr
+	for i := 0; i < k; i++ {
+		arr[p+i] = tmp[i] //p+i p等于初始下标，p可以是0 可以是
+	}
+}
+
+func main() {
+	arr := []int{4, 3, 2, 1}
+	MergeSort(arr, len(arr))
+	fmt.Println(arr)
 }
