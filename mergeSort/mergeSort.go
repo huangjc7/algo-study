@@ -62,7 +62,7 @@ func Merge(arr []int, p, q, r int) {
 	// 合并到原来数组
 	//将tmp拷贝回arr
 	for i := 0; i < k; i++ {
-		arr[p+i] = tmp[i] //p+i p等于初始下标，p可以是0 可以是
+		arr[p+i] = tmp[i] //p+i p等于初始下标，p接收的是初始下标也会接收q+1的下标 所以p+i是左右起始的下标加上i新增的下标来赋值
 	}
 }
 
