@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package mergeSort
 
 // [4,3,2,1]
 func MergeSort(a []int, n int) {
@@ -64,10 +62,4 @@ func Merge(arr []int, p, q, r int) {
 	for i := 0; i < k; i++ {
 		arr[p+i] = tmp[i] //p+i p等于初始下标，p接收的是初始下标也会接收q+1的下标 所以p+i是左右起始的下标加上i新增的下标来赋值
 	}
-}
-
-func main() {
-	arr := []int{4, 3, 2, 1}
-	MergeSort(arr, len(arr))
-	fmt.Println(arr)
 }
