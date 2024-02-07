@@ -1,10 +1,8 @@
 package binarySearch
 
-import (
-	"testing"
-)
+import "testing"
 
-func TestBsearch(t *testing.T) {
+func TestbackBsearch(t *testing.T) {
 	tests := []struct {
 		name   string
 		arr    []int
@@ -12,10 +10,10 @@ func TestBsearch(t *testing.T) {
 		result int
 	}{
 		{
-			name:   "重复值查找第一个给定值",
+			name:   "重复值查找最后给给定值",
 			arr:    []int{1, 2, 3, 3, 3, 3, 3, 4, 5, 5, 5, 5, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 9},
 			value:  5,
-			result: 8,
+			result: 12,
 		},
 		{
 			name:   "给定一个不存在的值 是否会数组越界",
@@ -32,11 +30,9 @@ func TestBsearch(t *testing.T) {
 	}
 
 	for _, v := range tests {
-		got := Bsearch(v.arr, v.value)
+		got := backBsearch(v.arr, v.value)
 		if got != v.result {
 			t.Errorf("Test '%s' failed: binarySearch() = %d, want %d", v.name, got, v.result)
-
 		}
-
 	}
 }
