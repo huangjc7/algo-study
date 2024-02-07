@@ -9,7 +9,7 @@ func backBsearch(arr []int, value int) int {
 	low := 0
 	high := len(arr) - 1
 	for low <= high {
-		midd := low + (high-low)>>2
+		midd := low + (high-low)>>1
 		if value >= arr[midd] {
 			low = midd + 1
 		} else if value < arr[midd] {
