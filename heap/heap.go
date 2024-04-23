@@ -29,6 +29,7 @@ func (h *heap) insert(data int) {
 
 func (h *heap) removeMax() {
 	h.a[1] = h.a[h.count]
+	h.a[h.count] = 0
 	h.count--
 	i := 1
 	//from up to down heap
